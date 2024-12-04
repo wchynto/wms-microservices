@@ -32,6 +32,6 @@ server.bindAsync(
   `0.0.0.0:${PORT}`,
   grpc.ServerCredentials.createInsecure(),
   () => {
-    console.log(`User service is running at http://localhost:${PORT}`);
+    console.log(`Kategori service is running at http://localhost:${PORT}`);
   }
 );

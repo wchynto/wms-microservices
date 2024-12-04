@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package barang_service;
+
+message Barang {
+  string UUID = 1;
+  string namaBarang = 2;
+  int64 jumlah = 3;
+  int64 persediaanMinimum = 4;
+  string satuan = 5;
+  string kategoriUUID = 6;
+  string kategoriNama = 7;
+}
+
+message Barangs {
+  repeated Barang Barangs = 1;
+}
+
+message GetBarangByUUIDRequest {
+  string UUID = 1;
+}
+
+message GetBarangsRequest {
+  // You can add parameters like pagination here if needed
+}
+
+message CreateBarangRequest {
+  Barang Barang = 1;
+}
+
+message UpdateBarangRequest {
+  Barang Barang = 1;
+}
+
+message DeleteBarangRequest {
+  string UUID = 1;
+}
+
+service BarangService {
+  rpc GetBarang(GetBarangByUUIDRequest) returns (Barang) {}
+  rpc GetBarangs(GetBarangsRequest) returns (Barangs) {}
+  rpc CreateBarang(CreateBarangRequest) returns (Barang) {}
+  rpc UpdateBarang(UpdateBarangRequest) returns (Barang) {}
+  rpc DeleteBarang(DeleteBarangRequest) returns (Barang) {}
+}
