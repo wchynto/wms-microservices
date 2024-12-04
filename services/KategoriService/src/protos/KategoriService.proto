@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package kategori_service;
+
+message Kategori {
+  string UUID = 1;
+  string namaKategori = 2;
+}
+
+message Kategoris {
+  repeated Kategori kategoris = 1;
+}
+
+message GetKategoriByUUIDRequest {
+  string UUID = 1;
+}
+
+message GetKategorisRequest {
+  // You can add parameters like pagination here if needed
+}
+
+message CreateKategoriRequest {
+  Kategori kategori = 1;
+}
+
+message UpdateKategoriRequest {
+  Kategori kategori = 1;
+}
+
+message DeleteKategoriRequest {
+  string UUID = 1;
+}
+
+service KategoriService {
+  rpc GetKategori(GetKategoriByUUIDRequest) returns (Kategori) {}
+  rpc GetKategoris(GetKategorisRequest) returns (Kategoris) {}
+  rpc CreateKategori(CreateKategoriRequest) returns (Kategori) {}
+  rpc UpdateKategori(UpdateKategoriRequest) returns (Kategori) {}
+  rpc DeleteKategori(DeleteKategoriRequest) returns (Kategori) {}
+}
