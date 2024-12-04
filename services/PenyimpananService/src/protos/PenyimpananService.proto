@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package penyimpanan_service;
+
+message Penyimpanan {
+  string UUID = 1;
+  string namaPenyimpanan = 2;
+  bool isAvailable = 3;
+}
+
+message Penyimpanans {
+  repeated Penyimpanan Penyimpanans = 1;
+}
+
+message GetPenyimpananByUUIDRequest {
+  string UUID = 1;
+}
+
+message GetPenyimpanansRequest {
+  // You can add parameters like pagination here if needed
+}
+
+message CreatePenyimpananRequest {
+  Penyimpanan Penyimpanan = 1;
+}
+
+message UpdatePenyimpananRequest {
+  Penyimpanan Penyimpanan = 1;
+}
+
+message DeletePenyimpananRequest {
+  string UUID = 1;
+}
+
+message UpdateStatusPenyimpananRequest {
+  string UUID = 1;
+  bool isAvailable = 2;
+}
+
+service PenyimpananService {
+  rpc GetPenyimpanan(GetPenyimpananByUUIDRequest) returns (Penyimpanan) {}
+  rpc GetPenyimpanans(GetPenyimpanansRequest) returns (Penyimpanans) {}
+  rpc CreatePenyimpanan(CreatePenyimpananRequest) returns (Penyimpanan) {}
+  rpc UpdatePenyimpanan(UpdatePenyimpananRequest) returns (Penyimpanan) {}
+  rpc DeletePenyimpanan(DeletePenyimpananRequest) returns (Penyimpanan) {}
+  rpc UpdateStatusPenyimpanan(UpdateStatusPenyimpananRequest) returns (Penyimpanan) {}
+}

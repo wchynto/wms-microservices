@@ -82,7 +82,6 @@ const getUserByEmail = async (call, callback) => {
 
 const createUser = async (call, callback) => {
   try {
-    console.log(call.request);
     const user = await User.create({
       uuid: uuidv4(),
       name: call.request.user.name,
